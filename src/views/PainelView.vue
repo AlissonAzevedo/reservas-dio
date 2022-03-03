@@ -1,6 +1,6 @@
 <template>
-  <div class="home">
-    <h1>oi</h1>
+  <div>
+    painel
   </div>
 </template>
 
