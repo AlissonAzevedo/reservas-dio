@@ -26,6 +26,7 @@ export default {
   padding: 0;
   box-sizing: border-box;
   font-family: 'Rubik', sans-serif;
+  text-decoration: none;
 }
 .container {
   display: grid;
