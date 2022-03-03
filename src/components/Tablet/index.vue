@@ -1,7 +1,9 @@
-<template>
+<template> 
     <div class="container">
-        <CellPhoneIcon :size="24"/>
-        <p>TABLETS</p>
+        <router-link class="link" to="/tablets">
+            <CellPhoneIcon :size="24"/>
+            <p>TABLETS</p>
+        </router-link>
     </div>
 </template>
 
@@ -16,12 +18,13 @@ export default {
 </script>
 
 <style scoped>
-.container {
+.container .link {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    color: #fff;
 }
 
 .container:hover {

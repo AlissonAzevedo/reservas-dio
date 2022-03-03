@@ -1,31 +1,33 @@
 <template>
-    <div class="container">
-        <LaptopIcon :size="24"/>
-        <p>LAPTOPS</p>
-    </div>
+  <div class="container">
+    <router-link class="link" to="/laptops">
+      <LaptopIcon :size="24" />
+      <p>LAPTOPS</p>
+    </router-link>
+  </div>
 </template>
 
 <script>
-import LaptopIcon from 'vue-material-design-icons/Laptop'
+import LaptopIcon from "vue-material-design-icons/Laptop";
 export default {
-    name: "Laptop",
-    components: {
-        LaptopIcon,
-    },
+  name: "Laptop",
+  components: {
+    LaptopIcon,
+  },
 };
 </script>
 
 <style scoped>
-.container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
+.container .link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #fff;
 }
 
 .container:hover {
-    background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.2);
 }
-
 </style>

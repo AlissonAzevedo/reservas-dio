@@ -1,12 +1,14 @@
 <template>
-    <div class="container">
-        <PainelIcon :size="24"/>
-        <p>PAINEL</p>
-    </div>
+  <div class="container">
+    <router-link class="link" to="/">
+      <PainelIcon :size="24" />
+      <p>PAINEL</p>
+    </router-link>
+  </div>
 </template>
 
 <script>
-import PainelIcon from 'vue-material-design-icons/HomeVariantOutline'
+import PainelIcon from "vue-material-design-icons/HomeVariantOutline";
 export default {
   name: "Painel",
   components: {
@@ -16,15 +18,16 @@ export default {
 </script>
 
 <style scoped>
-.container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
+.container .link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #fff;
 }
 
 .container:hover {
-    background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.2);
 }
 </style>

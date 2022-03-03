@@ -1,9 +1,12 @@
 <template>
     <div class="container">
-        <div class="icon">
-            <KeyIcon :size="24"/>
-        </div>
-        <p>CHAVE</p>
+        <router-link class="link" to="/chaves">
+            <div class="icon">
+                <KeyIcon :size="24"/>
+            </div>
+            <p>CHAVE</p>      
+        </router-link>
+
     </div>
 </template>
 
@@ -19,18 +22,19 @@ export default {
 </script>
 
 <style scoped>
-.container {
+.container .link {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    color: #fff;
 }
 
 .container:hover {
     background: rgba(255, 255, 255, 0.2);
 }
 .icon{
-    transform:rotateY(180deg);
+    transform:rotateY(180deg);   
 }
 </style>
