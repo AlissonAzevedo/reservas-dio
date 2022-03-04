@@ -1,6 +1,6 @@
 <template>
   <div class="container" v-bind:class="{ active: selected }">
-    <router-link class="link" to="/">
+    <router-link class="link" :to="router_item">
       <Icon :icon="icon_src" :alt="icon_name"/>
       <p>{{ name }}</p>
     </router-link>
@@ -25,7 +25,11 @@ export default {
       default: false,
     },
     icon_src: {},
-  },
+    router_item: {
+      type: String,
+      default: "",
+    },
+},
   data() {
     return {
       icon_name: this.nome,
