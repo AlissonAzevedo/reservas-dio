@@ -34,11 +34,11 @@ export default {
     grid-area: menu-lateral;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    
     height: 100vh;
     background: var(--background-menu);
     color: #fff;
-    padding: 60px 0;
+    padding: 70px 0;
 }
 
 </style>

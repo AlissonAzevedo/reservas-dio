@@ -20,7 +20,7 @@ export default {
 
 <style scoped>
 .container{
-    height:60px;
+    height: 80px;
     display: flex;
     flex-direction: column;
     align-items: center;
