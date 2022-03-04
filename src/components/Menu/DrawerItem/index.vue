@@ -51,6 +51,7 @@ p {
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  
 }
 
 .container .link {
@@ -63,15 +64,17 @@ p {
 }
 
 .container:hover {
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(0, 0, 0, 0.1);
 }
 
 .active {
   box-sizing: border-box;
-  border: 3px solid #fff;
+  border: 3.7px solid #fff;
   border-top-style: none;
   border-right-style: none;
   border-bottom-style: none;
   border-left-style: solid;
+  margin-left: 2px;
+  background: rgba(255, 255, 255, 0.05);
 }
 </style>

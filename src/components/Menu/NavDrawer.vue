@@ -20,9 +20,7 @@ export default {
 </script>
 
 <style scoped>
-*{
-    font-size: 12px;
-}
+
 .menu-lateral {
     grid-area: menu-lateral;
     display: flex;
