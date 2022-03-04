@@ -34,8 +34,8 @@ export default {
     grid-area: menu-lateral;
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
     height: 100vh;
-    width: 80px;
     background: var(--background-menu);
     color: #fff;
     padding: 60px 0;

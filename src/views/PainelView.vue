@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     painel
   </div>
 </template>
@@ -11,5 +11,8 @@ export default {
 }
 </script>
 <style scoped>
+.container {
+  display: grid;
 
+}
 </style>

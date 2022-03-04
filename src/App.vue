@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container-main">
     <div>
       <MenuLateral />
     </div>
@@ -28,10 +28,10 @@ export default {
   font-family: 'Rubik', sans-serif;
   text-decoration: none;
 }
-.container {
+.container-main {
   display: grid;
   height: 100vh;
-  grid-template-columns: 80px auto;  /* 80px = width do menu lateral */
+  grid-template-columns: 70px auto;  /* 80px = width do menu lateral */
   grid-template-rows: 100%;
   grid-template-areas: "menu-lateral content";
 }
