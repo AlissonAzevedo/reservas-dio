@@ -7,7 +7,7 @@
   </div>
 </template>
 <script>
-import MenuLateral from "./components/MenuLateral.vue";
+import MenuLateral from "./components/Menu/NavDrawer.vue";
 export default {
   name: "App",
   components: {

@@ -1,27 +1,20 @@
 <template>
   <div class="menu-lateral">   
-        <Painel />
-        <Chave />
-        <Sala />
-        <Tablet />
-        <Laptop />
+        <DrawerItem icon_src="img/painel.svg" selected name="painel"/> 
+        <DrawerItem icon_src="img/chave.svg" name="chave"/>
+        <DrawerItem icon_src="img/sala.svg" name="sala"/>
+        <DrawerItem icon_src="img/tablet.svg" name="tablet"/>
+        <DrawerItem icon_src="img/laptop.svg" name="laptop"/>
   </div>
 </template>
 
 <script>
-import Painel from '@/components/Painel';
-import Chave from '@/components/Chave';
-import Sala from '@/components/Sala';
-import Tablet from '@/components/Tablet';
-import Laptop from '@/components/Laptop';
+import DrawerItem from '@/components/Menu/DrawerItem';
+
 export default {
   name: "MenuLateral",
   components: {
-    Painel,
-    Chave,
-    Sala,
-    Tablet,
-    Laptop,
+    DrawerItem,
   },
 };
 </script>
