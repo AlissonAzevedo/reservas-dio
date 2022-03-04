@@ -1,17 +1,17 @@
 <template>
   <div class="container-main">
     <div>
-      <MenuLateral />
+      <NavDrawer />
     </div>
     <router-view />
   </div>
 </template>
 <script>
-import MenuLateral from "./components/Menu/NavDrawer.vue";
+import NavDrawer from "./components/Menu/NavDrawer.vue";
 export default {
   name: "App",
   components: {
-    MenuLateral,
+    NavDrawer,
   },
 };
 </script>
