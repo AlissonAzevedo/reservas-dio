@@ -1,15 +1,18 @@
 <template>
-  <div class="container" v-bind:class="{ active: selected }">
+  <div
+    @click="ToggleMenu"
+    class="container"
+    v-bind:class="{ active: IsActive }"
+  >
     <router-link class="link" :to="router_item">
-      <Icon :icon="icon_src" :alt="icon_name"/>
+      <Icon :icon="icon_src" :alt="icon_name" />
       <p>{{ name }}</p>
     </router-link>
   </div>
 </template>
 
 <script>
-
-import Icon from './Icon';
+import Icon from "./Icon";
 export default {
   name: "DrawerItem",
   components: {
@@ -20,20 +23,22 @@ export default {
       type: String,
       default: "",
     },
-    selected: {
-      type: Boolean,
-      default: false,
-    },
-    icon_src: {},
     router_item: {
       type: String,
       default: "",
     },
-},
+    icon_src: {},
+  },
   data() {
     return {
       icon_name: this.nome,
+      IsActive: false,
     };
+  },
+  methods: {
+    ToggleMenu() {
+      this.IsActive = !this.IsActive;
+    },
   },
 };
 </script>
@@ -51,7 +56,6 @@ p {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  
 }
 
 .container .link {
