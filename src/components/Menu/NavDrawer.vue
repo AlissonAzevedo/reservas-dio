@@ -24,7 +24,6 @@ export default {
   grid-area: menu-lateral;
   display: flex;
   flex-direction: column;
-
   height: 100vh;
   background: var(--background-menu);
   color: #fff;
