@@ -1,14 +1,10 @@
 <template>
-  <div
-    @click="ToggleMenu"
-    class="container"
-    v-bind:class="{ active: IsActive }"
-  >
-    <router-link class="link" :to="router_item">
+  <router-link id="link" :to="router_item">
+    <div id="container">
       <Icon :icon="icon_src" :alt="icon_name" />
       <p>{{ name }}</p>
-    </router-link>
-  </div>
+    </div>
+  </router-link>
 </template>
 
 <script>
@@ -32,13 +28,7 @@ export default {
   data() {
     return {
       icon_name: this.nome,
-      IsActive: false,
     };
-  },
-  methods: {
-    ToggleMenu() {
-      this.IsActive = !this.IsActive;
-    },
   },
 };
 </script>
@@ -49,7 +39,7 @@ p {
   font-size: 12px;
   text-transform: uppercase;
 }
-.container {
+#container {
   height: 80px;
   width: 100%;
   display: flex;
@@ -58,7 +48,7 @@ p {
   justify-content: center;
 }
 
-.container .link {
+#link #container{
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -67,11 +57,11 @@ p {
   color: #fff;
 }
 
-.container:hover {
+#container:hover {
   background: rgba(0, 0, 0, 0.1);
 }
 
-.active {
+a.router-link-active {
   box-sizing: border-box;
   border: 3.7px solid #fff;
   border-top-style: none;
