@@ -23,7 +23,6 @@ export default {
 #container-key {
   display: grid;
   height: 100vh;
-  margin: 0 2rem;
   grid-template-columns: 830px 400px;
   grid-template-rows: 70px 250px 250px;
   grid-template-areas:"SearchField SearchField "
