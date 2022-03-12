@@ -1,15 +1,20 @@
-<template>
-  <div id="container-key">
-    <KeyCard />
+<template> 
+  <div class="container-card">
+    <div id="container-key">  
+      <KeyCard />
+      <CardAside />
+    </div>
   </div>
 </template>
 
 <script>
 import KeyCard from '@/components/Chave/Card';
+import CardAside from '@/components/Chave/CardAside';
 export default {
   name: "ChaveView",
   components: {
     KeyCard,
+    CardAside,
   },
 }
 </script>
@@ -18,12 +23,18 @@ export default {
 #container-key {
   display: grid;
   height: 100vh;
-  padding: 0 2rem;
-  grid-template-columns: auto 140px;
+  margin: 0 2rem;
+  grid-template-columns: 830px 400px;
   grid-template-rows: 70px 250px 250px;
-  grid-template-areas:"SearchField SearchField SearchField"
-                      "KeyCard KeyCard CardAside"
-                      "KeyCard KeyCard CardAside";
-  background-color: var(--background-main);
+  grid-template-areas:"SearchField SearchField "
+                      "KeyCard CardAside"
+                      "KeyCard CardAside";
+ 
+}
+.container-card{
+   background-color: var(--background-main);
+   display: flex;
+   justify-content: center;
+   align-items: center;
 }
 </style>
