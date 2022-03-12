@@ -20,6 +20,7 @@ export default {
   --green: #42b983;
   --primary: #2c3e50;
   --background-menu: #794150;
+  --background-main: #f0f0f0;
 }
 * {
   margin: 0;
@@ -31,7 +32,7 @@ export default {
 .container-main {
   display: grid;
   height: 100vh;
-  grid-template-columns: 70px auto;  /* 80px = width do menu lateral */
+  grid-template-columns: 70px auto;  /* 70px = width do menu lateral */
   grid-template-rows: 100%;
   grid-template-areas: "menu-lateral content";
 }
