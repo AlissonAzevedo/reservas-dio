@@ -27,7 +27,7 @@ export default {
   },
   data() {
     return {
-      icon_name: this.nome,
+      icon_name: this.name,
     };
   },
 };
