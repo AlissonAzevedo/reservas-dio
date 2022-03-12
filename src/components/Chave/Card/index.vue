@@ -1,12 +1,21 @@
 <template>
     <div class="card">
-        oi
+        <Table />
+        <TableItem />
+        <TableItem />
+        <TableItem />
     </div>
 </template>
 
 <script>
+import Table from './Table'
+import TableItem from './Table/TableItem.vue'
 export default {
     name: 'KeyCard',
+    components: {
+        Table,
+        TableItem
+    },
 }
 </script>
 
