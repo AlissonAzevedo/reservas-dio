@@ -23,7 +23,7 @@ export default {
 #container-key {
   display: grid;
   height: 100vh;
-  grid-template-columns: 830px 400px;
+  grid-template-columns: 70vw 20vw;
   grid-template-rows: 70px 250px 250px;
   grid-template-areas:"SearchField SearchField "
                       "KeyCard CardAside"
