@@ -74,6 +74,7 @@ li:first-child{
 }
 li:nth-child(2){
   width: 50px;
+  margin-left: -15px;
 }
 li:nth-child(3), li:nth-child(4){
   width: 155px;
