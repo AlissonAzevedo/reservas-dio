@@ -81,10 +81,10 @@ li:nth-child(3), li:nth-child(4){
 }
 li:nth-child(5){
   width: 18px;
-  margin-right: -15px;
+  margin-right: -20px;
 }
 li:nth-child(6){
   width: 18px;
-  margin-left: -15px;
+  margin-left: -20px;
 }
 </style>
