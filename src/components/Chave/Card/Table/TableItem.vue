@@ -69,4 +69,21 @@ li {
   display: flex;
   flex-direction: row;
 }
+li:first-child{
+  width: 130px;
+}
+li:nth-child(2){
+  width: 50px;
+}
+li:nth-child(3), li:nth-child(4){
+  width: 155px;
+}
+li:nth-child(5){
+  width: 18px;
+  margin-right: -15px;
+}
+li:nth-child(6){
+  width: 18px;
+  margin-left: -15px;
+}
 </style>
