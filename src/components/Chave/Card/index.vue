@@ -11,6 +11,13 @@
     <TableItem name="Marcos Frazão" keys="054" />
     <TableItem name="Renata Cardoso"/>
     <TableItem />
+    <TableItem />
+    <TableItem />
+    <TableItem />
+    <TableItem />
+    <TableItem />
+    <TableItem />
+    <TableItem />
   </div>
 </template>
 
@@ -31,5 +38,6 @@ export default {
   grid-area: KeyCard;
   background-color: #fff;
   border-radius: 8px;
+  overflow: scroll;
 }
 </style>
