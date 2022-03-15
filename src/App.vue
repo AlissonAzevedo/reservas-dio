@@ -22,6 +22,8 @@ export default {
   --background-menu: #794150;
   --background-main: #f0f0f0;
   --secondary: #e5e5e5;
+  --light-green: #42b983cc;
+  --red:#e92929;
 }
 * {
   margin: 0;
