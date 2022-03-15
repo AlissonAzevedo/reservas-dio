@@ -1,5 +1,4 @@
 <template>
-  <Modal :IsActive="activeModal" />
   <div class="card-aside">
     <div class="containerInput">
       <input type="text" v-model="first_name" placeholder="Nome" />
@@ -8,7 +7,7 @@
       <input type="text" v-model="last_name" placeholder="Sobrenome" />
     </div>
     <div class="containerInput">
-      <select name="key" id="selectKey" v-model="key">
+      <select name="key" id="key" v-model="key">
         <option value="">Selecione uma chave</option>
         <option value="140">140</option>
         <option value="039">039</option>
@@ -22,11 +21,7 @@
 </template>
 
 <script>
-import Modal from "@/components/Chave/Modal";
 export default {
-  components: {
-    Modal,
-  },
   data() {
     return {
       activeModal: false,
@@ -50,7 +45,7 @@ export default {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
 }
 .containerInput {
@@ -72,13 +67,12 @@ input {
   color: #794150;
   outline: none;
 }
-select{
+select {
   outline: none;
   background-color: transparent;
   border: none;
   color: #794150;
 }
-
 
 .btnAddReservation {
   color: #fff;
