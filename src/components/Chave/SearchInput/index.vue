@@ -43,7 +43,7 @@ export default {
 .SearchInput {
   border: none;
   background-color: transparent;
-  color: #794150;
+  color: var(--text);
   outline: none;
 }
 .SearchIcon {
