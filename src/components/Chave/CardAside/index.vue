@@ -1,22 +1,41 @@
 <template>
+  <Modal :IsActive="activeModal" />
   <div class="card-aside">
     <div class="containerInput">
-      <input class="SearchInput" type="text" placeholder="Digite uma chave">
-      <button class="SearchIcon">
-        <SearchIcon />
-      </button>
+      <input type="text" v-model="first_name" placeholder="Nome" />
     </div>
-    <button class="btnAddReservation">
-        Adicionar Reserva
-      </button>
+    <div class="containerInput">
+      <input type="text" v-model="last_name" placeholder="Sobrenome" />
+    </div>
+    <div class="containerInput">
+      <select name="key" id="selectKey" v-model="key">
+        <option value="">Selecione uma chave</option>
+        <option value="140">140</option>
+        <option value="039">039</option>
+        <option value="056">056</option>
+      </select>
+    </div>
+    <button @click="OpenModal" class="btnAddReservation">
+      Adicionar Reserva
+    </button>
   </div>
 </template>
 
 <script>
-import SearchIcon from "./SearchIcon";
+import Modal from "@/components/Chave/Modal";
 export default {
   components: {
-    SearchIcon
+    Modal,
+  },
+  data() {
+    return {
+      activeModal: false,
+    };
+  },
+  methods: {
+    OpenModal() {
+      this.activeModal = true;
+    },
   },
 };
 </script>
@@ -26,7 +45,7 @@ export default {
   grid-area: CardAside;
   background-color: #fff;
   border-radius: 8px;
-  height: 250px;
+  height: 350px;
   margin: 0 10px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
   display: flex;
@@ -34,10 +53,10 @@ export default {
   justify-content: space-around;
   align-items: center;
 }
-.containerInput{
+.containerInput {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   flex-direction: row;
   background-color: var(--secondary);
   border-radius: 6px;
@@ -46,27 +65,24 @@ export default {
   margin: 0 20px;
   padding: 8px;
 }
-.SearchInput {
+
+input {
   border: none;
   background-color: transparent;
   color: #794150;
   outline: none;
 }
-.SearchIcon{
-  border: none;
+select{
+  outline: none;
   background-color: transparent;
-  cursor: pointer;
-  transition: 0.3s;
-  margin-left: 2px;
-}
-.SearchIcon:hover{
-  transform: scale(1.3);
+  border: none;
+  color: #794150;
 }
 
 
 .btnAddReservation {
   color: #fff;
-  background-color: rgba(66, 185, 131, .8);
+  background-color: rgba(66, 185, 131, 0.8);
   padding: 10px;
   border: none;
   border-radius: 6px;
@@ -74,22 +90,22 @@ export default {
   width: 80%;
   cursor: pointer;
 }
-.btnAddReservation:hover{
+.btnAddReservation:hover {
   background-color: var(--green);
 }
-@media(max-width: 1340px){
-  .card-aside{
+@media (max-width: 1340px) {
+  .card-aside {
     width: 90%;
   }
-  .containerInput{
+  .containerInput {
     width: 70%;
     justify-content: center;
   }
-  .SearchInput{
+  .SearchInput {
     width: 80%;
     font-size: 12px;
   }
-  .SearchIcon{
+  .SearchIcon {
     height: 16px;
     width: 16px;
   }
