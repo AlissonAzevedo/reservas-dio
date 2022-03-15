@@ -14,9 +14,9 @@
         <option value="056">056</option>
       </select>
     </div>
-    <button @click="OpenModal" class="btnAddReservation">
-      Adicionar Reserva
-    </button>
+
+    <button @click="OpenModal" class="btnAddReservation">Pegar</button>
+    <button class="btnDevolution">Devolver</button>
   </div>
 </template>
 
@@ -76,7 +76,7 @@ select {
 
 .btnAddReservation {
   color: #fff;
-  background-color: rgba(66, 185, 131, 0.8);
+  background-color: var(--green);
   padding: 10px;
   border: none;
   border-radius: 6px;
@@ -85,7 +85,18 @@ select {
   cursor: pointer;
 }
 .btnAddReservation:hover {
-  background-color: var(--green);
+  background-color: var(--light-green);
+}
+
+.btnDevolution {
+  color: #fff;
+  background-color: var(--red);
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  height: 40px;
+  width: 80%;
+  cursor: pointer;
 }
 @media (max-width: 1340px) {
   .card-aside {
