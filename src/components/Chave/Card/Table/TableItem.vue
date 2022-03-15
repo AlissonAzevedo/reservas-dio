@@ -53,7 +53,7 @@ ul {
   align-items: center;
   justify-content: space-around;
   margin-top: 10px;
-  background-color: #e5e5e5;
+  background-color: var(--secondary);
   border-radius: 8px;
   height: 60px;
   margin: 5px 15px;
