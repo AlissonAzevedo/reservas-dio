@@ -1,6 +1,7 @@
 <template>
   <div class="container-card">
     <div id="container-key">
+      <SearchInput />
       <KeyCard />
       <CardAside />
     </div>
@@ -10,11 +11,13 @@
 <script>
 import KeyCard from "@/components/Chave/Card";
 import CardAside from "@/components/Chave/CardAside";
+import SearchInput from "@/components/Chave/SearchInput";
 export default {
   name: "ChaveView",
   components: {
     KeyCard,
     CardAside,
+    SearchInput,
   },
 };
 </script>
