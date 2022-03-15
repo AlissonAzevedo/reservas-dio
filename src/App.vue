@@ -24,6 +24,7 @@ export default {
   --secondary: #e5e5e5;
   --light-green: #42b983cc;
   --red:#e92929;
+  --text: #794150;
 }
 * {
   margin: 0;
