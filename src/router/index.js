@@ -15,7 +15,7 @@ const routes = [
   {
     path: '/chaves/:id',
     name: 'chavesid',
-    component: () => import('../views/ChaveView.vue')
+    component: () => import('../views/ChaveDetail.vue')
   },
   {
     path: '/salas',
