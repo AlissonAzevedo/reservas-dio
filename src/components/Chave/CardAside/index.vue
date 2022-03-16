@@ -16,7 +16,6 @@
     </div>
 
     <button @click="OpenModal" class="btnAddReservation">Pegar</button>
-    <button class="btnDevolution">Devolver</button>
   </div>
 </template>
 
@@ -66,9 +65,11 @@ input {
   background-color: transparent;
   color: #794150;
   outline: none;
+  width: 100%;
 }
 select {
   outline: none;
+  width: 100%;
   background-color: transparent;
   border: none;
   color: #794150;
@@ -88,16 +89,6 @@ select {
   background-color: var(--light-green);
 }
 
-.btnDevolution {
-  color: #fff;
-  background-color: var(--red);
-  padding: 10px;
-  border: none;
-  border-radius: 6px;
-  height: 40px;
-  width: 80%;
-  cursor: pointer;
-}
 @media (max-width: 1340px) {
   .card-aside {
     width: 90%;

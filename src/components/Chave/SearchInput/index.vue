@@ -45,6 +45,7 @@ export default {
   background-color: transparent;
   color: var(--text);
   outline: none;
+  width: 100%;
 }
 .SearchIcon {
   border: none;
