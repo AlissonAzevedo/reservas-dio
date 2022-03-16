@@ -8,7 +8,11 @@
       </li>
       <li>{{ delivered }}</li>
       <li>{{ devolution }}</li>
-      <li><EditIcon /></li>
+      <li>
+        <router-link :to="route_path">
+          <EditIcon />
+        </router-link>
+      </li>
       <li><RemoveIcon /></li>
     </ul>
   </div>
@@ -42,6 +46,10 @@ export default {
       type: String,
       default: "01/01/2001 - 12:02",
     },
+    route_path: {
+      type: String,
+      default: "",
+    },
   },
 };
 </script>
@@ -69,21 +77,22 @@ li {
   display: flex;
   flex-direction: row;
 }
-li:first-child{
+li:first-child {
   width: 130px;
 }
-li:nth-child(2){
+li:nth-child(2) {
   width: 50px;
   margin-left: -15px;
 }
-li:nth-child(3), li:nth-child(4){
+li:nth-child(3),
+li:nth-child(4) {
   width: 155px;
 }
-li:nth-child(5){
+li:nth-child(5) {
   width: 18px;
   margin-right: -20px;
 }
-li:nth-child(6){
+li:nth-child(6) {
   width: 18px;
   margin-left: -20px;
 }

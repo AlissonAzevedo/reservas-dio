@@ -7,6 +7,7 @@
         keys="140"
         delivered="13/03/2022 - 06:57"
         devolution="13/03/2022 - 12:07"
+        :route_path="`/chaves/${id}`"
       />
       <TableItem name="João Amorim" keys="029" />
       <TableItem name="Marcos Frazão" keys="054" devolution="" />
@@ -28,6 +29,11 @@ import Table from "./Table";
 import TableItem from "./Table/TableItem";
 export default {
   name: "KeyCard",
+  data() {
+    return {
+      id: 1,
+    };
+  },
   components: {
     Table,
     TableItem,
