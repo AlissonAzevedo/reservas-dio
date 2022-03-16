@@ -1,42 +1,56 @@
 <template>
-  <div class="card-aside">
-    <div class="containerInput">
-      <input type="text" v-model="first_name" placeholder="Nome" />
-    </div>
-    <div class="containerInput">
-      <input type="text" v-model="last_name" placeholder="Sobrenome" />
-    </div>
-    <div class="containerInput">
-      <select name="key" id="key" v-model="key">
-        <option value="">Selecione uma chave</option>
-        <option value="140">140</option>
-        <option value="039">039</option>
-        <option value="056">056</option>
-      </select>
-    </div>
+  <form @submit="createReservation">
+    <div class="card-aside">
+      <div class="containerInput">
+        <input type="text" v-model="first_name" placeholder="Nome" />
+      </div>
+      <div class="containerInput">
+        <input type="text" v-model="last_name" placeholder="Sobrenome" />
+      </div>
+      <div class="containerInput">
+        <select name="key" id="key" v-model="key">
+          <option value="">Selecione uma chave</option>
+          <option value="140">140</option>
+          <option value="039">039</option>
+          <option value="056">056</option>
+        </select>
+      </div>
 
-    <button @click="OpenModal" class="btnAddReservation">Pegar</button>
-  </div>
+      <button type="submit" class="btnAddReservation">Pegar</button>
+    </div>
+  </form>
 </template>
 
 <script>
 export default {
   data() {
     return {
-      activeModal: false,
+      first_name: "",
+      last_name: "",
+      key: "",
     };
   },
   methods: {
-    OpenModal() {
-      this.activeModal = true;
+    createReservation(e) {
+      e.preventDefault();
+      const data = {
+        first_name: this.first_name,
+        last_name: this.last_name,
+        key: this.key,
+      };
+      const dataJson = JSON.stringify(data);
+      console.log(dataJson);
     },
   },
 };
 </script>
 
 <style scoped>
-.card-aside {
+form{
   grid-area: CardAside;
+}
+.card-aside {
+  
   background-color: #fff;
   border-radius: 8px;
   height: 350px;
