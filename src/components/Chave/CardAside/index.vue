@@ -69,8 +69,8 @@ form{
   background-color: var(--secondary);
   border-radius: 6px;
   height: 40px;
-  width: 80%;
-  margin: 0 20px;
+  width: 90%;
+  margin: 0 10px;
   padding: 8px;
 }
 
@@ -108,7 +108,7 @@ select {
     width: 90%;
   }
   .containerInput {
-    width: 70%;
+    width: 80%;
     justify-content: center;
   }
   .SearchInput {
