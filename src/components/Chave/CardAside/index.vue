@@ -2,17 +2,17 @@
   <form @submit="createReservation">
     <div class="card-aside">
       <div class="containerInput">
-        <input type="text" v-model="first_name" placeholder="Nome" />
+        <input type="text" v-model="primeiro_nome" placeholder="Nome" />
       </div>
       <div class="containerInput">
-        <input type="text" v-model="last_name" placeholder="Sobrenome" />
+        <input type="text" v-model="ultimo_nome" placeholder="Sobrenome" />
       </div>
       <div class="containerInput">
-        <select name="key" id="key" v-model="key">
+        <select name="chave" id="chave" v-model="chave">
           <option value="">Selecione uma chave</option>
-          <option value="140">140</option>
-          <option value="039">039</option>
-          <option value="056">056</option>
+          <option v-for="key in chaves" :key="key.id" :value="key.id">
+            {{ key.numero }} - {{ key.nome }}
+          </option>
         </select>
       </div>
 
@@ -25,32 +25,54 @@
 export default {
   data() {
     return {
-      first_name: "",
-      last_name: "",
-      key: "",
+      primeiro_nome: "",
+      ultimo_nome: "",
+      chave: "",
+      chaves: null,
     };
   },
+  created() {
+    this.getKeys();
+  },
   methods: {
-    createReservation(e) {
+    async getKeys() {
+      const req = await fetch("http://127.0.0.1:8000/api/v1/chaves/");
+      const data = await req.json();
+      this.chaves = data;
+      // console.log(data);
+    },
+    async createReservation(e) {
       e.preventDefault();
       const data = {
-        first_name: this.first_name,
-        last_name: this.last_name,
-        key: this.key,
+        primeiro_nome: this.primeiro_nome,
+        ultimo_nome: this.ultimo_nome,
+        chaves: this.chave,
       };
       const dataJson = JSON.stringify(data);
-      console.log(dataJson);
+      const req = await fetch("http://127.0.0.1:8000/api/v1/reservas/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: dataJson,
+      });
+
+      this.primeiro_nome = "";
+      this.ultimo_nome = "";
+      this.chave = "";
+      // const res = await req.json();
+      // console.log(res);
+      // console.log(dataJson);
     },
   },
 };
 </script>
 
 <style scoped>
-form{
+form {
   grid-area: CardAside;
 }
 .card-aside {
-  
   background-color: #fff;
   border-radius: 8px;
   height: 350px;
