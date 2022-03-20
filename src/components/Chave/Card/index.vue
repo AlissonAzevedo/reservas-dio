@@ -2,24 +2,22 @@
   <div class="card">
     <Table />
     <div class="items">
-      <TableItem
+      <!-- <TableItem
         name="Alisson Azevedo"
         keys="140"
         delivered="13/03/2022 - 06:57"
         devolution="13/03/2022 - 12:07"
         :route_path="`/chaves/${id}`"
+      /> -->
+      <TableItem
+        v-for="reserva in reservas"
+        :key="reserva.id"
+        :name="reserva.primeiro_nome + ' ' + reserva.ultimo_nome"
+        :keys="reserva.chave.numero"
+        :delivered="reserva.data_reserva_formatada"
+        :devolution="reserva.data_devolucao_formatada"
+        :route_path="`/chaves/${reserva.id}`"
       />
-      <TableItem name="João Amorim" keys="029" />
-      <TableItem name="Marcos Frazão" keys="054" devolution="" />
-      <TableItem name="Renata Cardoso" devolution=""/>
-      <TableItem devolution="" />
-      <TableItem />
-      <TableItem />
-      <TableItem />
-      <TableItem />
-      <TableItem />
-      <TableItem />
-      <TableItem />
     </div>
   </div>
 </template>
@@ -32,11 +30,26 @@ export default {
   data() {
     return {
       id: 1,
+      reservas: null,
     };
   },
   components: {
     Table,
     TableItem,
+  },
+  created() {
+    this.getReservations();
+  },
+  methods: {
+    async getReservations() {
+      const req = await fetch("http://127.0.0.1:8000/api/v1/reservas/");
+      const data = await req.json();
+      this.reservas = data;
+      // console.log(data);
+      setTimeout(() => {
+        this.getReservations();
+      }, 2000);
+    },
   },
 };
 </script>
