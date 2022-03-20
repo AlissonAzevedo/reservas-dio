@@ -24,6 +24,7 @@ export default {
   --secondary: #e5e5e5;
   --light-green: #42b983cc;
   --red:#e92929;
+  --light-red:rgba(233, 41, 41, .6);
   --text: #794150;
 }
 * {
