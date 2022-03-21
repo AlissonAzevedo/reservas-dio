@@ -7,30 +7,33 @@
           Voltar
         </button>
       </div>
-      <div class="row-content">
-        <h4>Nome:</h4>
-        <div class="containerInput">
-          <p>{{ primeiro_nome }}</p>
+      <div class="content-form">
+        <div class="row-content">
+          <h4>Nome:</h4>
+          <div class="containerInput">
+            <p>{{ primeiro_nome }}</p>
+          </div>
+        </div>
+        <div class="row-content">
+          <h4>Sobrenome:</h4>
+          <div class="containerInput">
+            <p>{{ ultimo_nome }}</p>
+          </div>
+        </div>
+        <div class="row-content">
+          <h4>Data Reserva:</h4>
+          <div class="containerInput">
+            <p>{{ data_reserva }}</p>
+          </div>
+        </div>
+        <div class="row-content">
+          <h4>Data Devolução:</h4>
+          <div class="containerInput">
+            <p>{{ data_devolucao }}</p>
+          </div>
         </div>
       </div>
-      <div class="row-content">
-        <h4>Sobrenome:</h4>
-        <div class="containerInput">
-          <p>{{ ultimo_nome }}</p>
-        </div>
-      </div>
-      <div class="row-content">
-        <h4>Data Reserva:</h4>
-        <div class="containerInput">
-          <p>{{ data_reserva }}</p>
-        </div>
-      </div>
-      <div class="row-content">
-        <h4>Data Devolução:</h4>
-        <div class="containerInput">
-          <p>{{ data_devolucao }}</p>
-        </div>
-      </div>
+
       <div class="content-button-devolution">
         <button @click="returnReservation" class="btnReturnReservation">
           Devolver
@@ -146,7 +149,18 @@ export default {
 .btnReturnPage:hover {
   background-color: var(--light-primary);
 }
-
+.content-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 70%;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: rgba(240, 240, 240, .4);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
+}
 .row-content {
   display: flex;
   flex-direction: row;
@@ -197,7 +211,7 @@ p {
   height: 40px;
   width: 300px;
   cursor: pointer;
-  margin-right: 10px;
+  margin-top: 20px;
 }
 .btnReturnReservation:hover {
   background-color: var(--light-red);
