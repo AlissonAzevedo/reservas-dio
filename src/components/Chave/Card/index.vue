@@ -15,7 +15,7 @@
         :name="reserva.primeiro_nome + ' ' + reserva.ultimo_nome"
         :keys="reserva.chave.numero"
         :delivered="reserva.data_reserva_formatada"
-        :devolution="reserva.data_devolucao_formatada"
+        :devolution="reserva.data_devolucao"
         :route_path="`/chaves/${reserva.id}`"
       />
     </div>
