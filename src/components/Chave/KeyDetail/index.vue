@@ -1,42 +1,58 @@
 <template>
   <div class="card">
-    <form @submit="updateReservation">
-      <div class="card-form">
-        <div class="row-content">
-          <div class="containerInput">
-            <input type="text" v-model="primeiro_nome" placeholder="Nome" />
-          </div>
-          <div class="containerInput">
-            <input type="text" v-model="ultimo_nome" placeholder="Sobrenome" />
-          </div>
-        </div>
-        <div class="row-content">
-          <div class="containerInput">
-            <p>{{ data_reserva }}</p>
-          </div>
-          <div class="containerInput">
-            <p>{{ data_devolucao }}</p>
-          </div>
+    <div class="card-form">
+      <div class="content-button-return">
+        <button @click="returnPage" class="btnReturnPage">
+          <img :src="iconVoltar" alt="voltar" />
+          Voltar
+        </button>
+      </div>
+      <div class="row-content">
+        <h4>Nome:</h4>
+        <div class="containerInput">
+          <p>{{ primeiro_nome }}</p>
         </div>
       </div>
-    </form>
-    <button @click="returnReservation" class="btnReturnReservation">
-      Devolver
-    </button>
+      <div class="row-content">
+        <h4>Sobrenome:</h4>
+        <div class="containerInput">
+          <p>{{ ultimo_nome }}</p>
+        </div>
+      </div>
+      <div class="row-content">
+        <h4>Data Reserva:</h4>
+        <div class="containerInput">
+          <p>{{ data_reserva }}</p>
+        </div>
+      </div>
+      <div class="row-content">
+        <h4>Data Devolução:</h4>
+        <div class="containerInput">
+          <p>{{ data_devolucao }}</p>
+        </div>
+      </div>
+      <div class="content-button-devolution">
+        <button @click="returnReservation" class="btnReturnReservation">
+          Devolver
+        </button>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 import moment from "moment";
+import iconVoltar from "../../../../public/icon/icon-voltar.svg";
 export default {
   name: "KeyDetail",
   data() {
     return {
+      iconVoltar: iconVoltar,
       primeiro_nome: this.primeiro_nome,
       ultimo_nome: this.ultimo_nome,
       data_reserva: this.data_reserva,
       data_devolucao: this.data_devolucao,
-      data_devolucao_local: moment().format('DD/MM/YYYY - H:mm'),
+      data_devolucao_local: moment().format("DD/MM/YYYY - hh:mm"),
       id_reserva: this.$route.params.id,
     };
   },
@@ -53,20 +69,28 @@ export default {
       this.primeiro_nome = data.primeiro_nome;
       this.ultimo_nome = data.ultimo_nome;
       this.data_reserva = data.data_reserva_formatada;
-      this.data_devolucao = data.data_devolucao_formatada;
+      this.data_devolucao = data.data_devolucao;
     },
     async returnReservation() {
       this.data_devolucao = this.data_devolucao_local;
-      const dataJson = JSON.stringify({data_devolucao: this.data_devolucao});
+      const dataJson = JSON.stringify({ data_devolucao: this.data_devolucao });
       const req = await fetch(
-        `http://127.0.0.1:8000/api/v1/reservas/${this.id_reserva}/`,{
+        `http://127.0.0.1:8000/api/v1/reservas/${this.id_reserva}/`,
+        {
           method: "PATCH",
           headers: {
             "Content-Type": "application/json",
           },
           body: dataJson,
-        });
-      console.log(dataJson);
+        }
+      );
+      setTimeout(() => {
+        this.$router.push("/chaves");
+      }, 1000);
+      // console.log(dataJson);
+    },
+    returnPage() {
+      this.$router.push("/chaves");
     },
   },
 };
@@ -81,27 +105,58 @@ export default {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
 }
 
-form {
-  width: 80%;
-}
 .card-form {
   border-radius: 8px;
   height: 80vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
+  width: 90%;
 }
+.content-button-return {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  width: 100%;
+}
+.btnReturnPage {
+  color: #fff;
+  background-color: var(--primary);
+  padding: 5px;
+  border: none;
+  border-radius: 6px;
+  height: 40px;
+  width: 90px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+}
+.btnReturnPage img {
+  width: 30px;
+  height: 30px;
+}
+.btnReturnPage:hover {
+  background-color: var(--light-primary);
+}
+
 .row-content {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
   align-items: center;
   width: 100%;
+  justify-content: space-between;
+}
+h4 {
+  margin-right: 20px;
+  color: var(--text);
 }
 .containerInput {
   display: flex;
@@ -111,9 +166,9 @@ form {
   background-color: var(--secondary);
   border-radius: 6px;
   height: 40px;
-  width: 60%;
   margin: 0 10px;
   padding: 8px;
+  width: 80%;
 }
 
 input {
@@ -126,6 +181,13 @@ input {
 p {
   color: var(--text);
 }
+.content-button-devolution {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  align-items: center;
+  width: 100%;
+}
 .btnReturnReservation {
   color: #fff;
   background-color: var(--red);
@@ -133,8 +195,9 @@ p {
   border: none;
   border-radius: 6px;
   height: 40px;
-  width: 30%;
+  width: 300px;
   cursor: pointer;
+  margin-right: 10px;
 }
 .btnReturnReservation:hover {
   background-color: var(--light-red);
