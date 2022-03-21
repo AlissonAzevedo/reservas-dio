@@ -55,7 +55,7 @@ export default {
       ultimo_nome: this.ultimo_nome,
       data_reserva: this.data_reserva,
       data_devolucao: this.data_devolucao,
-      data_devolucao_local: moment().format("DD/MM/YYYY - hh:mm"),
+      data_devolucao_local: moment().format("DD/MM/YYYY - H:mm"),
       id_reserva: this.$route.params.id,
     };
   },
