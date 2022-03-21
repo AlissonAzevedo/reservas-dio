@@ -1,10 +1,10 @@
 <template>
   <div class="menu-lateral">
-    <DrawerItem icon_src="img/painel.svg" router_item="/" name="painel" />
-    <DrawerItem icon_src="img/chave.svg" router_item="/chaves" name="chave" />
-    <DrawerItem icon_src="img/sala.svg" router_item="/salas" name="sala" />
-    <DrawerItem icon_src="img/tablet.svg" router_item="/tablets" name="tablet" />
-    <DrawerItem icon_src="img/laptop.svg" router_item="/laptops" name="laptop" />
+    <DrawerItem icon_src="../../../../img/painel.svg" router_item="/" name="painel" />
+    <DrawerItem icon_src="../../../../img/chave.svg" router_item="/chaves" name="chave" />
+    <DrawerItem icon_src="../../../../img/sala.svg" router_item="/salas" name="sala" />
+    <DrawerItem icon_src="../../../../img/tablet.svg" router_item="/tablets" name="tablet" />
+    <DrawerItem icon_src="../../../../img/laptop.svg" router_item="/laptops" name="laptop" />
   </div>
 </template>
 
