@@ -1,6 +1,7 @@
 <template>
   <div class="card">
     <Table />
+    <img @click="updateReservations" src="icon/update.svg" alt="update">
     <div class="items">
       <!-- <TableItem
         name="Alisson Azevedo"
@@ -46,9 +47,12 @@ export default {
       const data = await req.json();
       this.reservas = data;
       // console.log(data);
-      setTimeout(() => {
+      setInterval(() => {
         this.getReservations();
-      }, 2000);
+      }, 300000);
+    },
+    updateReservations() {
+      this.getReservations();
     },
   },
 };
@@ -71,5 +75,13 @@ export default {
 .card::-webkit-scrollbar-thumb {
   background-color: #e5e5e5;
   border-radius: 6px;
+}
+
+img{
+  position: relative;
+  right: -66vw;
+  top: -10px;
+  cursor: pointer;
+  display: block;
 }
 </style>
