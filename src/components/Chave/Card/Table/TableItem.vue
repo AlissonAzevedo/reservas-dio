@@ -86,7 +86,7 @@ li:nth-child(2) {
 }
 li:nth-child(3),
 li:nth-child(4) {
-  width: 155px;
+  width: 160px;
 }
 li:nth-child(5) {
   width: 18px;
