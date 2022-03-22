@@ -78,7 +78,7 @@ li {
   flex-direction: row;
 }
 li:first-child {
-  width: 130px;
+  width: 135px;
 }
 li:nth-child(2) {
   width: 50px;
