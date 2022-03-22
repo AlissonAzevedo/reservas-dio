@@ -23,6 +23,7 @@
 
 <script>
 export default {
+  name: "CardAside",
   data() {
     return {
       primeiro_nome: "",
@@ -56,7 +57,7 @@ export default {
         },
         body: dataJson,
       });
-
+      
       this.primeiro_nome = "";
       this.ultimo_nome = "";
       this.chave = "";
