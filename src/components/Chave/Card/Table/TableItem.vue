@@ -13,7 +13,7 @@
           <EditIcon />
         </router-link>
       </li>
-      <li><RemoveIcon /></li>
+      <li><RemoveIcon @click="deleteReservation"/></li>
     </ul>
   </div>
 </template>
@@ -49,6 +49,13 @@ export default {
     route_path: {
       type: String,
       default: "",
+    },
+
+  },
+  methods: {
+    deleteReservation(id) {
+      // console.log("delete");
+      this.$emit("delete-reservation", this.id);
     },
   },
 };

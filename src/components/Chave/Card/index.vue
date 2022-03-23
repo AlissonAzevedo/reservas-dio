@@ -1,7 +1,13 @@
 <template>
   <div class="card">
     <Table />
-    <img @click="updateReservations" src="icon/update.svg" alt="update">
+    <img
+      class="imgUpdate"
+      :class="{ 'active': isActive }"
+      @click="updateReservations"
+      src="icon/update.svg"
+      alt="update resevations"
+    />
     <div class="items">
       <!-- <TableItem
         name="Alisson Azevedo"
@@ -18,6 +24,7 @@
         :delivered="reserva.data_reserva_formatada"
         :devolution="reserva.data_devolucao"
         :route_path="`/chaves/${reserva.id}`"
+        @delete-reservation="deleteReservation(reserva.id)"
       />
     </div>
   </div>
@@ -30,7 +37,7 @@ export default {
   name: "KeyCard",
   data() {
     return {
-      id: 1,
+      isActive: false,
       reservas: null,
     };
   },
@@ -46,12 +53,27 @@ export default {
       const req = await fetch("http://127.0.0.1:8000/api/v1/reservas/");
       const data = await req.json();
       this.reservas = data;
+
       // console.log(data);
       setInterval(() => {
         this.getReservations();
       }, 300000);
     },
     updateReservations() {
+      setTimeout(() => {
+        this.isActive = true;
+        this.getReservations();
+      },500);
+      this.isActive = false;
+    },
+    async deleteReservation(id) {
+      // console.log("aqui", id);
+      const req = await fetch(`http://127.0.0.1:8000/api/v1/reservas/${id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
       this.getReservations();
     },
   },
@@ -77,11 +99,29 @@ export default {
   border-radius: 6px;
 }
 
-img{
+.imgUpdate {
   position: relative;
   right: -66vw;
   top: -10px;
   cursor: pointer;
   display: block;
+}
+
+.active {
+  position: relative;
+  right: -66vw;
+  top: -10px;
+  cursor: pointer;
+  display: block;
+  animation: loading 2s linear;
+}
+
+@keyframes loading {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 </style>
