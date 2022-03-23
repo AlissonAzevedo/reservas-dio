@@ -5,6 +5,7 @@
       <li>
         <KeyIcon />
         {{ keys }}
+        <span class="tooltiptext">{{ tooltiptext }}</span>
       </li>
       <li>{{ delivered }}</li>
       <li>{{ devolution }}</li>
@@ -13,7 +14,7 @@
           <EditIcon />
         </router-link>
       </li>
-      <li><RemoveIcon @click="deleteReservation"/></li>
+      <li><RemoveIcon @click="deleteReservation" /></li>
     </ul>
   </div>
 </template>
@@ -38,6 +39,10 @@ export default {
       type: String,
       default: "001",
     },
+    tooltiptext: {
+      type: String,
+      default: "",
+    },
     delivered: {
       type: String,
       default: "01/01/2001 - 06:57",
@@ -50,7 +55,6 @@ export default {
       type: String,
       default: "",
     },
-
   },
   methods: {
     deleteReservation(id) {
@@ -90,6 +94,9 @@ li:first-child {
 li:nth-child(2) {
   width: 50px;
   margin-left: -15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 li:nth-child(3),
 li:nth-child(4) {
@@ -102,5 +109,20 @@ li:nth-child(5) {
 li:nth-child(6) {
   width: 18px;
   margin-left: -20px;
+}
+li:nth-child(2) .tooltiptext {
+  visibility: hidden;
+  width: 100px;
+  background-color: rgba(0, 0, 0, .7);
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  font-size: 12px;
+  position: absolute;
+  z-index: 1;
+}
+
+li:nth-child(2):hover .tooltiptext {
+  visibility: visible;
 }
 </style>
