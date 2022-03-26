@@ -78,7 +78,7 @@ export default {
       this.data_devolucao = this.data_devolucao_local;
       const dataJson = JSON.stringify({ data_devolucao: this.data_devolucao });
       const req = await fetch(
-        `http://127.0.0.1:8000/api/v1/reservas/${this.id_reserva}/`,
+        `https://reservas-dio.herokuapp.com/api/v1/reservas/${this.id_reserva}/`,
         {
           method: "PATCH",
           headers: {
