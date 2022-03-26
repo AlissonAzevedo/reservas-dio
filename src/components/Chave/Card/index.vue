@@ -51,7 +51,7 @@ export default {
   },
   methods: {
     async getReservations() {
-      const req = await fetch("http://127.0.0.1:8000/api/v1/reservas/");
+      const req = await fetch("https://reservas-dio.herokuapp.com/api/v1/reservas/");
       const data = await req.json();
       this.reservas = data;
 
@@ -69,7 +69,7 @@ export default {
     },
     async deleteReservation(id) {
       // console.log("aqui", id);
-      const req = await fetch(`http://127.0.0.1:8000/api/v1/reservas/${id}`, {
+      const req = await fetch(`https://reservas-dio.herokuapp.com/api/v1/reservas/${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",

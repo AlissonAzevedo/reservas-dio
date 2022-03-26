@@ -66,7 +66,7 @@ export default {
   methods: {
     async getReservation() {
       const req = await fetch(
-        `http://127.0.0.1:8000/api/v1/reservas/${this.id_reserva}`
+        `https://reservas-dio.herokuapp.com/api/v1/reservas/${this.id_reserva}`
       );
       const data = await req.json();
       this.primeiro_nome = data.primeiro_nome;

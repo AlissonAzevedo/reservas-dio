@@ -2,13 +2,13 @@
   <form @submit="createReservation">
     <div class="card-aside">
       <div class="containerInput">
-        <input type="text" v-model="primeiro_nome" placeholder="Nome" />
+        <input type="text" v-model="primeiro_nome" placeholder="Nome" required />
       </div>
       <div class="containerInput">
-        <input type="text" v-model="ultimo_nome" placeholder="Sobrenome" />
+        <input type="text" v-model="ultimo_nome" placeholder="Sobrenome" required />
       </div>
       <div class="containerInput">
-        <select name="chave" id="chave" v-model="chave">
+        <select name="chave" id="chave" v-model="chave" required>
           <option value="">Selecione uma chave</option>
           <option v-for="key in chaves" :key="key.id" :value="key.id">
             {{ key.numero }} - {{ key.nome }}
@@ -37,7 +37,7 @@ export default {
   },
   methods: {
     async getKeys() {
-      const req = await fetch("http://127.0.0.1:8000/api/v1/chaves/");
+      const req = await fetch("https://reservas-dio.herokuapp.com/api/v1/chaves/");
       const data = await req.json();
       this.chaves = data;
       // console.log(data);
@@ -50,7 +50,7 @@ export default {
         chaves: this.chave,
       };
       const dataJson = JSON.stringify(data);
-      const req = await fetch("http://127.0.0.1:8000/api/v1/reservas/", {
+      const req = await fetch("https://reservas-dio.herokuapp.com/api/v1/reservas/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
