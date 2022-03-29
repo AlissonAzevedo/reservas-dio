@@ -75,21 +75,29 @@ export default {
       this.data_devolucao = data.data_devolucao;
     },
     async returnReservation() {
-      this.data_devolucao = this.data_devolucao_local;
-      const dataJson = JSON.stringify({ data_devolucao: this.data_devolucao });
-      const req = await fetch(
-        `https://reservas-dio.herokuapp.com/api/v1/reservas/${this.id_reserva}/`,
-        {
-          method: "PATCH",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: dataJson,
-        }
-      );
-      setTimeout(() => {
-        this.$router.push("/chaves");
-      }, 1000);
+      // console.log(this.data_devolucao);
+      if (this.data_devolucao === "Não devolvido") {
+        this.data_devolucao = this.data_devolucao_local;
+        // console.log(this.data_devolucao);
+        const dataJson = JSON.stringify({
+          data_devolucao: this.data_devolucao,
+        });
+        const req = await fetch(
+          `https://reservas-dio.herokuapp.com/api/v1/reservas/${this.id_reserva}/`,
+          {
+            method: "PATCH",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: dataJson,
+          }
+        );
+        setTimeout(() => {
+          this.$router.push("/chaves");
+        }, 1000);
+      } else {
+        alert("A chave já foi devolvida!");
+      }
       // console.log(dataJson);
     },
     returnPage() {
@@ -158,7 +166,7 @@ export default {
   height: 70%;
   padding: 10px;
   border-radius: 8px;
-  background-color: rgba(240, 240, 240, .4);
+  background-color: rgba(240, 240, 240, 0.4);
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
 }
 .row-content {
