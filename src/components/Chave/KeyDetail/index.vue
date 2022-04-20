@@ -11,15 +11,10 @@
         <div class="row-content">
           <h4>Nome:</h4>
           <div class="containerInput">
-            <p>{{ primeiro_nome }}</p>
+            <p>{{ nome }}</p>
           </div>
         </div>
-        <div class="row-content">
-          <h4>Sobrenome:</h4>
-          <div class="containerInput">
-            <p>{{ ultimo_nome }}</p>
-          </div>
-        </div>
+
         <div class="row-content">
           <h4>Data Reserva:</h4>
           <div class="containerInput">
@@ -44,19 +39,16 @@
 </template>
 
 <script>
-import moment from "moment";
 import iconVoltar from "../../../../public/icon/icon-voltar.svg";
 export default {
   name: "KeyDetail",
   data() {
     return {
       iconVoltar: iconVoltar,
-      primeiro_nome: this.primeiro_nome,
-      ultimo_nome: this.ultimo_nome,
+      nome: this.nome,
       data_reserva: this.data_reserva,
       data_devolucao: this.data_devolucao,
-      data_devolucao_local: moment().format("DD/MM/YYYY - HH:mm"),
-      id_reserva: this.$route.params.id,
+      id_reserva: this.$route.params.id,  
     };
   },
   components: {},
@@ -66,37 +58,38 @@ export default {
   methods: {
     async getReservation() {
       const req = await fetch(
-        `https://reservas-dio.herokuapp.com/api/v1/reservas/${this.id_reserva}`
+        `https://api-pega.herokuapp.com/api/v1/reservas/${this.id_reserva}`
       );
       const data = await req.json();
-      this.primeiro_nome = data.primeiro_nome;
-      this.ultimo_nome = data.ultimo_nome;
+      this.nome = data.pessoa.nome;
       this.data_reserva = data.data_reserva_formatada;
-      this.data_devolucao = data.data_devolucao;
+      this.data_devolucao = data.data_devolucao_formatada;
+      if(this.data_devolucao === this.data_reserva){
+        this.data_devolucao = "Não devolvido";
+      }
     },
     async returnReservation() {
-      // console.log(this.data_devolucao);
+      // validates if it was returned, if yes, issue an alert of Reservation already returned if the reservation is not returned
       if (this.data_devolucao === "Não devolvido") {
-        this.data_devolucao = this.data_devolucao_local;
-        // console.log(this.data_devolucao);
         const dataJson = JSON.stringify({
-          data_devolucao: this.data_devolucao,
+          devolvido: true,
         });
         const req = await fetch(
-          `https://reservas-dio.herokuapp.com/api/v1/reservas/${this.id_reserva}/`,
-          {
-            method: "PATCH",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: dataJson,
-          }
+        `https://api-pega.herokuapp.com/api/v1/reservas/${this.id_reserva}/`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: dataJson,
+        }
         );
         setTimeout(() => {
           this.$router.push("/chaves");
         }, 1000);
+        
       } else {
-        alert("A chave já foi devolvida!");
+        alert("Reserva já devolvida");
       }
       // console.log(dataJson);
     },

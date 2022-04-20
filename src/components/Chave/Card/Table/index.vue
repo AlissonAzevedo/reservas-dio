@@ -5,7 +5,6 @@
       <li>Reserva</li>
       <li>Entrega</li>
       <li>Devolução</li>
-      <li>Opção</li>
     </ul>
   </div>
 </template>
