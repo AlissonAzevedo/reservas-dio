@@ -38,7 +38,7 @@ export default {
 .container-main {
   display: grid;
   height: 100vh;
-  grid-template-columns: 70px auto;  /* 70px = width do menu lateral */
+  grid-template-columns: 75px auto;  /* 75px = width do menu lateral */
   grid-template-rows: 100%;
   grid-template-areas: "menu-lateral content";
 }

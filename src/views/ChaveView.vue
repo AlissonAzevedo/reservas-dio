@@ -1,7 +1,7 @@
 <template>
   <div class="container-card">
     <div id="container-key">
-      <SearchInput />
+     <!-- <SearchInput />-->
       <KeyCard />
       <CardAside />
     </div>

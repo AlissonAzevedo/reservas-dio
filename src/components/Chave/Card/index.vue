@@ -19,13 +19,12 @@
       <TableItem
         v-for="reserva in reservas"
         :key="reserva.id"
-        :name="reserva.primeiro_nome + ' ' + reserva.ultimo_nome"
+        :name="reserva.pessoa.nome"
         :keys="reserva.chave.numero"
         :tooltiptext="reserva.chave.nome"
         :delivered="reserva.data_reserva_formatada"
-        :devolution="reserva.data_devolucao"
-        :route_path="`/chaves/${reserva.id}`"
-        @delete-reservation="deleteReservation(reserva.id)"
+        :devolution="reserva.data_devolucao_formatada"
+        :route_path="`/chaves/${reserva.id}/`"
       />
     </div>
   </div>
@@ -40,6 +39,7 @@ export default {
     return {
       isActive: false,
       reservas: null,
+      baseUrl: process.env.VUE_APP_API_BASE_URL,
     };
   },
   components: {
@@ -51,14 +51,21 @@ export default {
   },
   methods: {
     async getReservations() {
-      const req = await fetch("https://reservas-dio.herokuapp.com/api/v1/reservas/");
+      const req = await fetch(`${this.baseUrl}/reservas/`);
       const data = await req.json();
       this.reservas = data;
-
-      // console.log(data);
+      // for every reservation where formatted_devolution_date equals formatted_reservation_date, formatted_devolution_date will be equal to Not Returned
+      this.reservas.forEach((reserva) => {
+        if (
+          reserva.data_devolucao_formatada ===
+          reserva.data_reserva_formatada
+        ) {
+          reserva.data_devolucao_formatada = "Não devolvido";
+        }
+      });
       setInterval(() => {
         this.getReservations();
-      }, 300000);
+      }, 30000);
     },
     updateReservations() {
       setTimeout(() => {
@@ -67,17 +74,8 @@ export default {
       },500);
       this.isActive = false;
     },
-    async deleteReservation(id) {
-      // console.log("aqui", id);
-      const req = await fetch(`https://reservas-dio.herokuapp.com/api/v1/reservas/${id}`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      this.getReservations();
-    },
   },
+
 };
 </script>
 

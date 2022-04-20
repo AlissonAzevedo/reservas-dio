@@ -2,10 +2,12 @@
   <form @submit="createReservation">
     <div class="card-aside">
       <div class="containerInput">
-        <input type="text" v-model="primeiro_nome" placeholder="Nome" required />
-      </div>
-      <div class="containerInput">
-        <input type="text" v-model="ultimo_nome" placeholder="Sobrenome" required />
+        <select name="pessoa" id="pessoa" v-model="pessoa" required>
+          <option value="">Selecione uma pessoa</option>
+          <option v-for="user in pessoas" :key="user.id" :value="user.id">
+            {{ user.nome }}
+          </option>
+        </select>
       </div>
       <div class="containerInput">
         <select name="chave" id="chave" v-model="chave" required>
@@ -26,40 +28,48 @@ export default {
   name: "CardAside",
   data() {
     return {
-      primeiro_nome: "",
-      ultimo_nome: "",
       chave: "",
+      pessoa: "",
+      pessoas: null,
       chaves: null,
+      baseUrl: process.env.VUE_APP_API_BASE_URL,
     };
   },
   created() {
     this.getKeys();
+    this.getUsers();
   },
   methods: {
     async getKeys() {
-      const req = await fetch("https://reservas-dio.herokuapp.com/api/v1/chaves/");
+      const req = await fetch(`${this.baseUrl}/chaves/`);
       const data = await req.json();
       this.chaves = data;
+      // console.log(data);
+    },
+    async getUsers() {
+      const req = await fetch(`${this.baseUrl}/pessoas/`);
+      const data = await req.json();
+      this.pessoas = data;
       // console.log(data);
     },
     async createReservation(e) {
       e.preventDefault();
       const data = {
-        primeiro_nome: this.primeiro_nome,
-        ultimo_nome: this.ultimo_nome,
+        pessoas: this.pessoa,
         chaves: this.chave,
       };
       const dataJson = JSON.stringify(data);
-      const req = await fetch("https://reservas-dio.herokuapp.com/api/v1/reservas/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: dataJson,
-      });
-      
-      this.primeiro_nome = "";
-      this.ultimo_nome = "";
+      const req = await fetch(
+        `${this.baseUrl}/reservas/`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: dataJson,
+        }
+      );
+      this.pessoa = "";
       this.chave = "";
       // const res = await req.json();
       // console.log(res);

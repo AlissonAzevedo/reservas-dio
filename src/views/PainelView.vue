@@ -20,6 +20,9 @@
 <script>
 export default {
   name: "PainelView",
+  mounted() {
+    this.$router.push("/chaves");
+  },
 };
 </script>
 <style scoped>

@@ -13,7 +13,7 @@ const routes = [
     component: () => import('../views/ChaveView.vue')
   },
   {
-    path: '/chaves/:id',
+    path: '/chaves/:id/',
     name: 'chavesid',
     component: () => import('../views/ChaveDetail.vue')
   },
@@ -31,6 +31,16 @@ const routes = [
     path: '/laptops',
     name: 'laptops',
     component: () => import('../views/LaptopView.vue')
+  },
+  {
+    path: '/reports',
+    name: 'reports',
+    component: () => import('../views/RelatorioView.vue')
+  },
+  {
+    path: '/admin',
+    name: 'admin',
+    component: () => import('../views/AdminView.vue')
   },
   
 ]

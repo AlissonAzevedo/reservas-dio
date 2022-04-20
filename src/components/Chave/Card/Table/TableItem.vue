@@ -1,7 +1,10 @@
 <template>
-  <div class="table-item">
+  <router-link :to="route_path">
+    <div class="table-item">
     <ul>
-      <li>{{ name }}</li>
+      <li>{{ name.slice(0,20)}}...
+        <span class="tooltiptext">{{ name }}</span>
+      </li>
       <li>
         <KeyIcon />
         {{ keys }}
@@ -9,14 +12,9 @@
       </li>
       <li>{{ delivered }}</li>
       <li>{{ devolution }}</li>
-      <li>
-        <router-link :to="route_path">
-          <EditIcon />
-        </router-link>
-      </li>
-      <li><RemoveIcon @click="deleteReservation" /></li>
     </ul>
-  </div>
+    </div>
+  </router-link>
 </template>
 
 <script>
@@ -56,12 +54,7 @@ export default {
       default: "",
     },
   },
-  methods: {
-    deleteReservation(id) {
-      // console.log("delete");
-      this.$emit("delete-reservation", this.id);
-    },
-  },
+  
 };
 </script>
 
@@ -89,7 +82,12 @@ li {
   flex-direction: row;
 }
 li:first-child {
-  width: 135px;
+  width: 165px;
+  margin-left: -15px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 li:nth-child(2) {
   width: 50px;
@@ -109,6 +107,22 @@ li:nth-child(5) {
 li:nth-child(6) {
   width: 18px;
   margin-left: -20px;
+}
+li:first-child .tooltiptext {
+  visibility: hidden;
+  width: 165px;
+  height: 40px;
+  background-color: rgba(0, 0, 0, .7);
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  font-size: 12px;
+  position: absolute;
+  z-index: 1;
+}
+
+li:first-child:hover .tooltiptext {
+  visibility: visible;
 }
 li:nth-child(2) .tooltiptext {
   visibility: hidden;
