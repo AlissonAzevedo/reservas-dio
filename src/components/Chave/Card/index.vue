@@ -49,6 +49,9 @@ export default {
   created() {
     this.getReservations();
   },
+  mounted() {
+    this.getReservations();
+  },
   methods: {
     async getReservations() {
       const req = await fetch(`${this.baseUrl}/reservas/`);
@@ -63,9 +66,9 @@ export default {
           reserva.data_devolucao_formatada = "Não devolvido";
         }
       });
-      setInterval(() => {
-        this.getReservations();
-      }, 30000);
+      // setInterval(() => {
+      //   this.getReservations();
+      // }, 30000);
     },
     updateReservations() {
       setTimeout(() => {
